@@ -1,0 +1,89 @@
+@import "tailwindcss";
+
+@theme {
+  --color-cream: #fff6ec;
+  --color-ink: #33202e;
+  --color-pink: #ff5d8f;
+  --color-peach: #ffa45b;
+  --color-lavender: #b78ce8;
+  --color-mint: #4ed4b5;
+  --color-sun: #ffd166;
+  --color-cherry: #e63956;
+
+  --font-display: "Fraunces", "Georgia", serif;
+  --font-body: "Outfit", "Helvetica Neue", sans-serif;
+
+  --animate-marquee: marquee 24s linear infinite;
+  --animate-spin-slower: spin-slower 14s linear infinite;
+  --animate-flicker: flicker 0.28s ease-in-out infinite alternate;
+  --animate-twinkle: twinkle 2.4s ease-in-out infinite;
+  --animate-float-y: floatY 5s ease-in-out infinite;
+  --animate-smoke: smoke 1.1s ease-out forwards;
+
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+  @keyframes spin-slower {
+    to { transform: rotate(360deg); }
+  }
+  @keyframes flicker {
+    from { transform: scale(1) rotate(-2deg); }
+    to { transform: scale(1.15) rotate(3deg); }
+  }
+  @keyframes twinkle {
+    0%, 100% { opacity: 0.15; transform: scale(0.6) rotate(0deg); }
+    50% { opacity: 1; transform: scale(1.1) rotate(20deg); }
+  }
+  @keyframes floatY {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-14px); }
+  }
+  @keyframes smoke {
+    0% { opacity: 0.7; transform: translateY(0) scale(0.5); }
+    100% { opacity: 0; transform: translateY(-46px) scale(1.6); }
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-cream);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: var(--color-pink);
+  color: #fff;
+}
+
+/* Dashed ticket edge used on the certificate */
+.ticket-edge {
+  --scissor: 12px;
+  mask:
+    radial-gradient(circle at 0 50%, transparent 0 var(--scissor), black var(--scissor)) left / 51% 100% no-repeat,
+    radial-gradient(circle at 100% 50%, transparent 0 var(--scissor), black var(--scissor)) right / 51% 100% no-repeat;
+}
+
+/* Soft grain overlay */
+.grain::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 60;
+  opacity: 0.05;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Flame core */
+.flame {
+  background: radial-gradient(circle at 50% 78%, #fff8d6 0%, #ffd166 38%, #ff8c42 68%, rgba(255, 93, 59, 0) 100%);
+  border-radius: 50% 50% 50% 50% / 62% 62% 38% 38%;
+  filter: drop-shadow(0 0 8px rgba(255, 166, 77, 0.85));
+}
