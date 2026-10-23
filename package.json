@@ -5,7 +5,7 @@
   "description": "An interactive birthday exam web app: animated quiz, certificate, candle-blowing cake, and a personal letter. Fully customizable by URL.",
   "author": "Sushen Santhush . (https://github.com/sushensanthush)",
   "license": "MIT",
-  "homepage": "https://github.com/sushensanthush",
+  "homepage": "https://sushensanthush.github.io/BirthdayWish",
   "keywords": [
     "react",
     "vite",
@@ -19,7 +19,9 @@
     "dev": "vite",
     "build": "tsc --noEmit && vite build",
     "typecheck": "tsc --noEmit",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "@types/canvas-confetti": "^1.9.0",
@@ -37,6 +39,7 @@
     "@types/react": "19.2.7",
     "@types/react-dom": "19.2.3",
     "@vitejs/plugin-react": "5.1.1",
+    "gh-pages": "^6.3.0",
     "tailwindcss": "4.1.17",
     "typescript": "5.9.3",
     "vite": "7.3.2",
